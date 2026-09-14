@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 1 - Lab Equipment and Thermistor Calibration</title>
+<title>Lab 2 - Conduction Investigation</title>
 <style>
 
 span.smallcaps{font-variant: small-caps;}
@@ -2315,7 +2315,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 1 - Lab Equipment and Thermistor Calibration</h1>
+<h1 class="title">Lab 2 - Conduction Investigation</h1>
 </div>
 
 
@@ -2327,7 +2327,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">Mo 2023-09-11 10:15</p>
+      <p class="date-modified">Su 2026-09-13 19:36</p>
     </div>
   </div>
     
@@ -2340,25 +2340,23 @@ window.Quarto = {
 
 <section id="activity-objective" class="level2">
 <h2 class="anchored" data-anchor-id="activity-objective">Activity Objective</h2>
-<ul>
-<li>Demonstrate basic usage of bench top power supply.</li>
-<li>Demonstrate basic usage of oscilloscope.</li>
-<li>Implement a thermistor in a voltage divider circuit with the Arduino.</li>
-<li>Perform a static calibration of a thermistor.</li>
-<li>Create and implement a linear fit of thermistor calibration data.</li>
-</ul>
+<p>Investigate the effects of material thickness and contact resistance on conduction.</p>
 </section>
 <section id="equipment-needed" class="level2">
 <h2 class="anchored" data-anchor-id="equipment-needed">Equipment Needed</h2>
 <ul>
-<li>Benchtop power supply unit (PSU) - (C)</li>
-<li>Multimeter - (S)</li>
-<li>Benchtop oscilloscope - (C)</li>
-<li>2 Film Thermistors - (I)</li>
-<li>Crimpable headers - (I)</li>
-<li>Arduino - (S)</li>
-<li>Laptop - (S)</li>
-<li>3 different temperatures of water - (I)</li>
+<li>bench top power supply unit (PSU) (C)</li>
+<li>thermal conductive tape (I)</li>
+<li>various thicknesses of high density polyethylene (HDPE) blocks (I)</li>
+<li>heater block (I)</li>
+<li>tape (I)</li>
+<li>dial caliper (S)</li>
+<li>2 calibrated film thermistors (S)</li>
+<li>2 bias resistors for voltage divider circuit (S)</li>
+<li>laptop (S)</li>
+<li>Arduino (s)</li>
+<li>breadboard (S)</li>
+<li>jumper wires (S)</li>
 </ul>
 <p>(C) - In classroom, (I) - provided by instructor, (S) - provided by student</p>
 </section>
@@ -2367,184 +2365,38 @@ window.Quarto = {
 <section id="procedure-1" class="level4">
 <h4 class="anchored" data-anchor-id="procedure-1">Procedure 1:</h4>
 <ol type="1">
-<li>Connect the red and black wire leads terminated with an alligator clip and banana plug to the positive and negative connections on the power supply unit (PSU), respectively.</li>
-<li>Turn on the power supply, and set the voltage to approximately <span class="math inline">\(5V\)</span>.</li>
-<li>Connect your multimeter to red and black leads and measure the voltage.</li>
-<li>Record the difference between the voltage displayed on the power supply and the voltage displayed on the multimeter in <a href="#tbl-voltage-difference-summary" class="quarto-xref">Table 1</a> shown below.</li>
-<li>Repeat step 4 for the other voltages shown in <a href="#tbl-voltage-difference-summary" class="quarto-xref">Table 1</a>.</li>
-</ol>
-<div id="tbl-voltage-difference-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-voltage-difference-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 1: Voltage Difference Summary
-</figcaption>
-<div aria-describedby="tbl-voltage-difference-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<td>PSU Display (<span class="math inline">\(V\)</span>)</td>
-<td><span class="math inline">\(5.0\)</span></td>
-<td><span class="math inline">\(7.5\)</span></td>
-<td><span class="math inline">\(10.0\)</span></td>
-</tr>
-<tr class="even">
-<td>Voltage Difference (<span class="math inline">\(V\)</span>)</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</section>
-<section id="procedure-2" class="level4">
-<h4 class="anchored" data-anchor-id="procedure-2">Procedure 2:</h4>
-<ol type="1">
-<li>Connect the oscilloscope probe lead to channel 1 on the oscilloscope.</li>
-<li>Power on the oscilloscope.</li>
-<li>Connect the oscilloscope probe ground lead (the alligator clip) to the ground terminal on the oscilloscope found in the bottom right corner of the oscilloscope.</li>
-<li>Connect the oscilloscope probe signal lead (the tip of the “pen” probe) to the signal terminal on the oscilloscope found directly above ground terminal used in step 3.</li>
-<li>Switch the attenuation switch on the oscilloscope probe to the “1x” position.</li>
-<li>Press the “Default” button and then the “Auto Setup” button on the oscilloscope.</li>
-<li>Using the “Measure” button, determine the amplitude of the signal displayed. Record the amplitude in the <a href="#tbl-amplitude-data-summary" class="quarto-xref">Table 2</a> below. Be sure to include units.</li>
-</ol>
-<div id="tbl-amplitude-data-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-amplitude-data-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 2: Amplitude Data Summary
-</figcaption>
-<div aria-describedby="tbl-amplitude-data-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<td>Attenuation</td>
-<td>1x</td>
-<td>10x</td>
-</tr>
-<tr class="even">
-<td>Amplitude</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<ol start="8" type="1">
-<li>Switch the oscilloscope probe attenuation switch to “10x” and repeat step 7.</li>
-</ol>
-</section>
-<section id="procedure-3" class="level4">
-<h4 class="anchored" data-anchor-id="procedure-3">Procedure 3:</h4>
-<ol type="1">
-<li>Crimp the header onto the film thermistor as demonstrated by the instructor.</li>
-<li>Construct a voltage divider circuit with the film thermistor and a bias resistor of <span class="math inline">\(100 k\Omega\)</span>.</li>
-<li>Connect the voltage divider circuit to an analog pin of the Arduino.</li>
-<li>Program the Arduino to display the analog values of the connected analog pin.</li>
-<li>Place the film thermistor in the first cup of water (cool water) and let it reach thermal equilibrium.</li>
-<li>Record the digital thermometer reading in the first cup of water in <a href="#tbl-calibration-data" class="quarto-xref">Table 3</a> below. Be sure to include units.</li>
-</ol>
-<div id="tbl-calibration-data" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-calibration-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 3: Calibration Data
-</figcaption>
-<div aria-describedby="tbl-calibration-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 7%">
-<col style="width: 34%">
-<col style="width: 34%">
-<col style="width: 23%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Data</th>
-<th>Known Temperature Source</th>
-<th>Temperature (<span class="math inline">\(^\circ C\)</span>)</th>
-<th>analogRead Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Cool Water</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Room Temperature Water</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Warm Water</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<ol start="7" type="1">
-<li>Record the analogRead value output from the Arduino in <a href="#tbl-calibration-data" class="quarto-xref">Table 3</a>.</li>
-<li>Repeat steps 5 through 7 for the second and third cup of water (room temperature and warm water).</li>
-<li>Create a linear curve fit of your calibration data using a spreadsheet application (i.e., Excel).</li>
-<li>Enter the linear curve fit expression in <a href="#tbl-linear-curve-fits" class="quarto-xref">Table 4</a> below where <span class="math inline">\(aR\)</span> represents your analogRead term and <span class="math inline">\(T\)</span> represents your temperature term.</li>
-</ol>
-<div id="tbl-linear-curve-fits" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-linear-curve-fits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 4: Linear Curve Fits
-</figcaption>
-<div aria-describedby="tbl-linear-curve-fits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Linear Fit Equation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(aR=\)</span></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(T=\)</span></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<ol start="11" type="1">
-<li>Repeat steps 9 and 10 for the inverse of the calibration data.</li>
-<li>Record the curve fit expressions in <a href="#tbl-linear-curve-fits" class="quarto-xref">Table 4</a> for your records. You will need these for future homework assignments.</li>
-<li>Repeat steps 1 through 12 for each film thermistor.</li>
+<li>Place thermal conductive pad onto the heating side of the heater block.</li>
+<li>Center film thermistor 1 on the thermal conductive pad.</li>
+<li>Place the thinnest high density polyethylene (HDPE) block onto the thermal conductive pad, sandwiching the film thermistor.</li>
+<li>Center film thermistor 2 on the top of the HDPE block. Secure the film thermistor 2, HDPE block, film thermistor 1, thermal conductive pad, and heater block block with tape.</li>
+<li>Apply approximately <span class="math inline">\(12V\)</span> to the heater block.</li>
+<li>Monitor the temperature difference between the film thermistor 1 and film thermistor 2.</li>
+<li>Once the temperature difference stops changing, record the temperature of each thermistor, and heater block voltage and current.</li>
+<li>Remove film thermistor 2.</li>
+<li>Place the thinnest HDPE block on the existing thinnest HDPE block. There should be two HDPE blocks stacked together.</li>
+<li>Center film thermistor 2 on the top of the second HDPE block. Secure the film thermistor 2, two HDPE blocks, film thermistor 1, thermal conductive pad, and heater block with tape.</li>
+<li>Monitor the temperature difference between the film thermistor 1 and film thermistor 2.</li>
+<li>Once the temperature difference stops changing, record the temperature of each thermistor, and heater block voltage and current.</li>
+<li>Repeat steps 3 through 12, for the various block sizes. For thicker blocks the voltage may need to be increased. Do not exceed <span class="math inline">\(15V\)</span>, though.</li>
 </ol>
 </section>
 </section>
 <section id="values-to-report-in-memo" class="level2">
 <h2 class="anchored" data-anchor-id="values-to-report-in-memo">Values to report in memo</h2>
 <ol type="1">
-<li>Maximum difference between the displayed power and the measured power of the PSU.</li>
-<li>Maximum amplitude between the two different attenuation settings of the oscilloscope.</li>
-<li>The linear curve fit equation and its inverse.</li>
+<li>HDPE block dimensions</li>
+<li>HDPE block thermal conductivity</li>
+<li>Power of the heater block</li>
+<li>Calculated heat flux</li>
+<li>Calculated heat rate</li>
+<li>Calculated contact resistance</li>
 </ol>
 </section>
 <section id="action-items" class="level2">
 <h2 class="anchored" data-anchor-id="action-items">Action Items</h2>
 <ul>
-<li>Complete Lab 1 Quiz on <a href="https://canvas.latech.edu">Canvas</a> by the end of class Fr 9-18.</li>
-<li>Following the <a href="Technical%20Memo%20Format.html">Technical Memo Format</a> guidelines, submit memo 1 on <a href="https://canvas.latech.edu">Canvas</a> by the beginning of class Fr 9-25.</li>
+<li>Complete Lab 2 Quiz on <a href="https://canvas.latech.edu">Canvas</a> by the end of class Fr 9-25.</li>
+<li>Following the <a href="Technical%20Memo%20Format.html">Technical Memo Format</a> guidelines, submit memo 2 on <a href="https://canvas.latech.edu">Canvas</a> by the beginning of class Fr 10-2.</li>
 </ul>
 </section>
 
